@@ -1,52 +1,126 @@
-# Love Coupons - Sistema de Cupones con MongoDB Atlas
+# 💝 Love Coupons
 
-Sistema web para gestionar cupones de amor con integración a MongoDB Atlas.
+Una aplicación web para gestionar cupones románticos con integración a WhatsApp y MongoDB Atlas.
 
-## Características
+## ✨ Características
 
-- Interfaz moderna y responsiva
-- Filtros por estado (Disponible, Usado, Expirado, Especial)
-- Modal de confirmación de canje
-- Notificaciones por WhatsApp al canjear
-- Integración completa con MongoDB Atlas
-- API REST para gestión de cupones
+- 🎫 Gestión completa de cupones (disponibles, usados, expirados, especiales)
+- 📱 Notificaciones automáticas por WhatsApp al canjear cupones
+- 🗄️ Base de datos en MongoDB Atlas
+- 🎨 Interfaz responsiva con Bootstrap 5
+- ⏰ Cuenta regresiva para cupones especiales
+- 🔄 Renovación automática de fechas
+- 📊 Filtros por estado de cupón
 
-## Prerrequisitos
+## 🏗️ Arquitectura
 
-- Node.js (versión 16 o superior)
-- Cuenta de MongoDB Atlas
-- Cluster de MongoDB Atlas configurado
+### Frontend (GitHub Pages)
+- HTML5/CSS3/JavaScript ES6+
+- Bootstrap 5 para UI responsiva
+- Fetch API para comunicación con backend
 
-## Instalación y Configuración
+### Backend (Railway)
+- Node.js + Express.js
+- MongoDB Atlas para persistencia
+- API REST para operaciones CRUD
+- Variables de entorno para configuración segura
 
-### 1. Clona o descarga el proyecto
+## 🚀 Despliegue
 
-```bash
-cd "c:\Users\rguzm\Desktop\Nueva carpeta"
+### Requisitos
+- Cuenta de GitHub
+- Cuenta de Railway
+- Cluster de MongoDB Atlas
+
+### Pasos rápidos
+
+1. **Configura MongoDB Atlas**
+   - Crea un cluster gratuito
+   - Obtén la URI de conexión
+
+2. **Despliega el backend**
+   ```bash
+   # Railway detectará automáticamente el proyecto
+   # Configura estas variables de entorno:
+   MONGODB_URI=tu_uri_de_atlas
+   DATABASE_NAME=Couponsdb
+   COLLECTION_NAME=coupon
+   PORT=$PORT
+   ```
+
+3. **Actualiza la URL del backend**
+   - En `js/coupons.js`, cambia `API_BASE` con tu URL de Railway
+
+4. **Despliega el frontend**
+   - Sube el código a GitHub
+   - Activa GitHub Pages en Settings → Pages
+
+### Instrucciones detalladas
+
+Lee [`DEPLOYMENT.md`](DEPLOYMENT.md) para instrucciones completas.
+
+## 📁 Estructura del proyecto
+
+```
+love-coupons/
+├── index.html          # Página principal
+├── tyc.html           # Términos y condiciones
+├── css/
+│   └── styles.css     # Estilos personalizados
+├── js/
+│   ├── coupons.js     # Lógica principal del frontend
+│   └── data.js        # Datos de respaldo
+├── img/               # Imágenes de cupones
+├── server/            # Backend Node.js
+│   ├── server.js      # API Express
+│   ├── package.json   # Dependencias
+│   └── .env.example   # Variables de entorno
+├── .gitignore         # Archivos ignorados
+├── DEPLOYMENT.md      # Guía de despliegue
+└── deploy.bat         # Script de despliegue (Windows)
 ```
 
-### 2. Instala las dependencias del backend
+## 🔧 Desarrollo local
 
+### Backend
 ```bash
 cd server
 npm install
+# Crea server/.env con tus credenciales
+npm start
 ```
 
-### 3. Configura las variables de entorno
+### Frontend
+Abre `index.html` en tu navegador o usa un servidor local.
 
-Edita el archivo `server/.env` con tus credenciales de MongoDB Atlas:
+## 🛡️ Seguridad
 
-```env
-# MongoDB Atlas Configuration
-MONGODB_URI=mongodb+srv://TU_USUARIO:TU_PASSWORD@TU_CLUSTER.mongodb.net/TU_BASE_DE_DATOS?retryWrites=true&w=majority
-DATABASE_NAME=tu_base_de_datos
-COLLECTION_NAME=coupons
+- ✅ Credenciales de MongoDB solo en Railway (no expuestas)
+- ✅ Variables de entorno para configuración
+- ✅ CORS configurado correctamente
+- ✅ No hay llaves sensibles en código público
 
-# Server Configuration
-PORT=3000
-```
+## 📝 API Endpoints
 
-**Importante:** Reemplaza los valores con tus credenciales reales de MongoDB Atlas.
+- `GET /api/coupons` - Obtener todos los cupones
+- `POST /api/coupons/redeem` - Canjear un cupón
+- `GET /api/health` - Health check
+
+## 🤝 Contribuir
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT.
+
+---
+
+Hecho con ❤️ para momentos especiales
 
 ### 4. Crea la colección en MongoDB Atlas
 

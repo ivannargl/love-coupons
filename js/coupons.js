@@ -3,6 +3,11 @@ let activeModal = null;
 let currentCoupons = COUPONS;
 const IMAGE_COUNT = 20;
 
+// Configuración de API - cambiar según el entorno
+const API_BASE = window.location.hostname === 'localhost'
+  ? 'http://localhost:3000'
+  : 'https://tu-backend-railway.up.railway.app'; // ← Cambia esto por tu URL real de Railway
+
 /* ══════════════════════════════════════════
    HELPERS
 ══════════════════════════════════════════ */
@@ -261,7 +266,7 @@ async function confirmRedeem() {
 
   // 6. Persistir en MongoDB Atlas (en background)
   try {
-    const response = await fetch('http://localhost:3000/api/coupons/redeem', {
+    const response = await fetch(`${API_BASE}/api/coupons/redeem`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -302,7 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 async function loadCoupons() {
   try {
-    const response = await fetch('http://localhost:3000/api/coupons');
+    const response = await fetch(`${API_BASE}/api/coupons`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
