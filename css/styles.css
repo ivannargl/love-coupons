@@ -1,0 +1,451 @@
+/* ═══════════════════════════════════════════
+   styles.css — Love Coupons
+   Organización:
+   1. Variables CSS (tokens de diseño)
+   2. Base / Reset
+   3. Header
+   4. Sección principal
+   5. Tarjeta de cupón
+   6. Pills de filtro
+   7. Modal de canje
+   8. Toast de éxito
+   9. Footer
+   10. Animaciones
+   11. Responsive
+═══════════════════════════════════════════ */
+
+/* ── 1. VARIABLES CSS ── */
+:root {
+  --blush:    #f7e8e8;
+  --rose:     #e8c4c4;
+  --dusty:    #d49fa0;
+  --crimson:  #b5454a;
+  --deep:     #8b2d30;
+  --cream:    #fdf8f5;
+  --warm:     #f5ece8;
+  --petal:    #fce8ec;
+  --text:     #4a2c2c;
+  --muted:    #9e7070;
+}
+
+/* ── 2. BASE / RESET ── */
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 10% 0%, rgba(228,180,180,0.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(181,69,74,0.10) 0%, transparent 55%);
+}
+
+/* ── 3. HEADER ── */
+header {
+  background:
+    linear-gradient(135deg, rgba(139,45,48,0.85) 0%, rgba(181,69,74,0.85) 60%, rgba(212,159,160,0.85) 100%),
+    url("../img/0.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 3.5rem 1rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%);
+}
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: #fff;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+  position: relative;
+}
+header p.subtitle {
+  color: rgba(255,255,255,0.78);
+  font-size: 1.05rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  position: relative;
+}
+.hearts-row {
+  color: rgba(255,255,255,0.45);
+  font-size: 1.2rem;
+  letter-spacing: 0.4em;
+  margin-top: 0.6rem;
+  position: relative;
+}
+
+/* ── 4. SECCIÓN PRINCIPAL ── */
+.section-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--crimson);
+  font-style: italic;
+}
+.section-divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, var(--dusty), var(--crimson), var(--dusty));
+  margin: 0.5rem auto 1.8rem;
+  border-radius: 2px;
+}
+
+/* ── 5. TARJETA DE CUPÓN ── */
+.coupon-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(139,45,48,0.09);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid var(--rose);
+  min-height: min-content;
+}
+.coupon-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(139,45,48,0.16);
+}
+
+.coupon-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+.coupon-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.coupon-card:hover .coupon-img-wrap img {
+  transform: scale(1.06);
+}
+
+/* Efecto de borde roto / perforación */
+.coupon-tear {
+  position: relative;
+  background: #fff;
+}
+.coupon-tear::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 0; right: 0;
+  height: 18px;
+  background: #fff;
+  clip-path: polygon(
+    0% 100%, 3% 0%, 6% 100%, 9% 0%, 12% 100%, 15% 0%,
+    18% 100%, 21% 0%, 24% 100%, 27% 0%, 30% 100%, 33% 0%,
+    36% 100%, 39% 0%, 42% 100%, 45% 0%, 48% 100%, 51% 0%,
+    54% 100%, 57% 0%, 60% 100%, 63% 0%, 66% 100%, 69% 0%,
+    72% 100%, 75% 0%, 78% 100%, 81% 0%, 84% 100%, 87% 0%,
+    90% 100%, 93% 0%, 96% 100%, 100% 0%, 100% 100%
+  );
+}
+
+.coupon-body {
+  padding: 1.4rem 1.4rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.badge-cat {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--petal);
+  color: var(--crimson);
+  border-radius: 20px;
+  padding: 3px 10px;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  font-weight: 700;
+}
+
+/* Badge de estado: disponible, usado, expirado, especial */
+.badge-estado {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 20px;
+  padding: 2px 9px;
+  display: inline-block;
+  margin-left: 6px;
+}
+.badge-estado.disponible { background: #d4edda; color: #155724; }
+.badge-estado.usado       { background: #e2e3e5; color: #383d41; }
+.badge-estado.expirado    { background: #f8d7da; color: #721c24; }
+.badge-estado.especial    { background: #fff3cd; color: #856404; }
+
+.coupon-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+  line-height: 1.35;
+  white-space: normal; 
+  overflow: visible;
+}
+.coupon-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.55;
+  flex: 1 0 auto;
+  margin-bottom: 1rem;
+}
+
+.coupon-footer {
+  border-top: 1.5px dashed var(--rose);
+  padding: 0.85rem 1.4rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.coupon-exp {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.coupon-exp span { color: var(--dusty); font-weight: 700; }
+
+.btn-redeem {
+  background: linear-gradient(135deg, var(--crimson), var(--deep));
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 0.52rem 1.3rem;
+  font-size: 0.85rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.btn-redeem:hover {
+  background: linear-gradient(135deg, var(--deep), #6b1f22);
+  transform: scale(1.04);
+  box-shadow: 0 4px 16px rgba(139,45,48,0.3);
+  color: #fff;
+}
+.btn-redeem:disabled,
+.btn-redeem.usado,
+.btn-redeem.expirado {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── 6. PILLS DE FILTRO ── */
+.filter-pill {
+  background: #fff;
+  color: var(--muted);
+  border: 1.5px solid var(--rose);
+  border-radius: 50px;
+  padding: 0.38rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-pill:hover,
+.filter-pill.active {
+  background: var(--crimson);
+  color: #fff;
+  border-color: var(--crimson);
+}
+
+/* ── 7. MODAL DE CANJE ── */
+.modal-content {
+  border-radius: 24px;
+  border: none;
+  box-shadow: 0 20px 60px rgba(139,45,48,0.18);
+  overflow: hidden;
+}
+.modal-header-custom {
+  background:
+    linear-gradient(135deg, rgba(181,69,74,0.85), rgba(139,45,48,0.85)),
+    url("../img/0.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 1.8rem 2rem 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+.modal-header-custom h5 {
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  font-size: 1.4rem;
+  margin: 0;
+}
+.modal-header-custom .btn-close {
+  filter: invert(1);
+  opacity: 0.7;
+}
+
+.modal-coupon-preview {
+  background: var(--petal);
+  border-radius: 16px;
+  padding: 1.2rem 1.4rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  border: 1.5px dashed var(--dusty);
+  height: auto;
+}
+.modal-coupon-preview img {
+  width: 80px; height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+.modal-coupon-preview .name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--text);
+  flex: 1; /* Ocupa el espacio restante */
+  min-width: 150px; /* Si el espacio es menor a esto, saltará de línea */
+  word-break: break-word; /* Rompe palabras largas si es necesario */
+}
+.modal-coupon-preview .val {
+  color: var(--crimson);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  word-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+}
+
+.modal-code-block {
+  border-top: 1px dashed var(--dusty);
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+}
+.modal-code-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.modal-code-value {
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--crimson);
+  background: rgba(212,159,160,0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+}
+
+.modal-body-inner { padding: 1.6rem 2rem; }
+
+.modal-confirm-text {
+  font-size: 0.95rem;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.6;
+}
+.modal-confirm-sub {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.btn-confirm {
+  background: linear-gradient(135deg, var(--crimson), var(--deep));
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 0.7rem 2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.25s;
+}
+.btn-confirm:hover {
+  background: linear-gradient(135deg, var(--deep), #6b1f22);
+  box-shadow: 0 6px 20px rgba(139,45,48,0.3);
+  color: #fff;
+}
+.btn-cancel-custom {
+  background: #fff;
+  color: var(--muted);
+  border: 1.5px solid var(--rose);
+  border-radius: 50px;
+  padding: 0.7rem 2rem;
+  font-weight: 700;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+.btn-cancel-custom:hover {
+  border-color: var(--dusty);
+  color: var(--text);
+}
+
+.confirm-note {
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0.8rem;
+}
+
+/* ── 8. TOAST DE ÉXITO ── */
+.toast-custom {
+  background: #fff;
+  border-left: 5px solid var(--crimson);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(139,45,48,0.15);
+}
+.toast-body {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+/* ── 9. FOOTER ── */
+footer {
+  background: var(--deep);
+  color: rgba(255,255,255,0.55);
+  text-align: center;
+  padding: 1.8rem 1rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+footer a { color: var(--rose); }
+
+/* ── 10. ANIMACIONES ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 11. RESPONSIVE ── */
+@media (max-width: 576px) {
+  .coupon-footer     { flex-direction: column; gap: 0.8rem; text-align: center; }
+  .modal-body-inner  { padding: 1.2rem; }
+
+  .modal-coupon-preview {
+    flex-direction: column; /* Imagen arriba, texto abajo en celular */
+    text-align: center;
+  }
+
+  .modal-coupon-preview img {
+    width: 100px; /* Un poco más grande para que luzca en móvil */
+    height: 100px;
+  }
+}

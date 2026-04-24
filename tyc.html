@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Términos y Condiciones — Love Coupons</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --blush:   #f7e8e8;
+      --rose:    #e8c4c4;
+      --dusty:   #d49fa0;
+      --crimson: #b5454a;
+      --deep:    #8b2d30;
+      --cream:   #fdf8f5;
+      --petal:   #fce8ec;
+      --text:    #4a2c2c;
+      --muted:   #9e7070;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse at 10% 0%, rgba(228,180,180,0.25) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 100%, rgba(181,69,74,0.10) 0%, transparent 55%);
+    }
+
+    /* ── NAVBAR ── */
+    .navbar-custom {
+      background: var(--deep);
+      padding: 1rem 0;
+    }
+    .navbar-brand-custom {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #fff !important;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+    .navbar-brand-custom span {
+      color: var(--rose);
+    }
+    .back-link {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--rose); }
+
+    /* ── HEADER HERO ── */
+    .tyc-hero {
+      background: linear-gradient(135deg, rgba(139,45,48,0.88) 0%, rgba(181,69,74,0.88) 60%, rgba(212,159,160,0.88) 100%),
+                  url("img/0.jpg");
+      background-size: cover;
+      background-position: center;
+      padding: 3rem 1rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .tyc-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.07) 0%, transparent 50%);
+    }
+    .tyc-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: #fff;
+      margin-bottom: 0.3rem;
+      position: relative;
+    }
+    .tyc-hero p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      position: relative;
+    }
+    .tyc-hero .hearts-row {
+      color: rgba(255,255,255,0.4);
+      font-size: 1rem;
+      letter-spacing: 0.4em;
+      margin-top: 0.5rem;
+      position: relative;
+    }
+
+    /* ── MAIN CARD ── */
+    .tyc-card {
+      background: #fff;
+      border-radius: 24px;
+      border: 1.5px solid var(--rose);
+      box-shadow: 0 8px 40px rgba(139,45,48,0.10);
+      padding: 3rem 3.5rem;
+      margin-top: -2rem;
+      position: relative;
+      z-index: 2;
+    }
+    @media (max-width: 576px) {
+      .tyc-card { padding: 2rem 1.5rem; }
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, var(--dusty), var(--crimson), var(--dusty));
+      margin: 0.5rem auto 2.5rem;
+      border-radius: 2px;
+    }
+    .intro-date {
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    /* ── ARTICLE SECTIONS ── */
+    .tyc-section {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px dashed var(--rose);
+    }
+    .tyc-section:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .tyc-section h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--crimson);
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-num {
+      background: var(--petal);
+      color: var(--crimson);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      border-radius: 50%;
+      width: 24px; height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      letter-spacing: 0;
+    }
+
+    .tyc-section p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .tyc-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.8rem 0 0;
+    }
+    .tyc-section ul li {
+      font-size: 0.93rem;
+      color: var(--text);
+      line-height: 1.65;
+      padding: 0.45rem 0 0.45rem 1.6rem;
+      position: relative;
+      border-bottom: 1px solid var(--blush);
+    }
+    .tyc-section ul li:last-child { border-bottom: none; }
+    .tyc-section ul li::before {
+      position: absolute;
+      left: 0;
+      color: var(--dusty);
+      font-size: 0.75rem;
+      top: 0.55rem;
+    }
+
+    /* ── LOVE NOTE HIGHLIGHT ── */
+    .love-note {
+      background: var(--petal);
+      border-left: 3px solid var(--crimson);
+      border-radius: 0 12px 12px 0;
+      padding: 0.9rem 1.2rem;
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--deep);
+      font-style: italic;
+      line-height: 1.65;
+    }
+    .love-note::before {
+      content: '❝  ';
+      color: var(--dusty);
+      font-style: normal;
+      font-size: 1rem;
+    }
+
+    /* ── BACK BUTTON ── */
+    .btn-back {
+      background: linear-gradient(135deg, var(--crimson), var(--deep));
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 0.6rem 1.8rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.25s;
+      display: inline-block;
+    }
+    .btn-back:hover {
+      background: linear-gradient(135deg, var(--deep), #6b1f22);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(139,45,48,0.28);
+      color: #fff;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--deep);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 1.8rem 1rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      margin-top: 4rem;
+    }
+    footer a { color: var(--rose); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ NAVBAR ══════════ -->
+  <nav class="navbar-custom d-flex align-items-center px-4">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="index.html" class="navbar-brand-custom">Love <span>Coupons</span></a>
+      <a href="index.html" class="back-link">← Volver a los cupones</a>
+    </div>
+  </nav>
+
+  <!-- ══════════ HERO ══════════ -->
+  <div class="tyc-hero">
+    <h1>Términos y Condiciones</h1>
+    <p>Lee con atención, esto es muy serio 🌹</p>
+    <div class="hearts-row">♥ ♥ ♥</div>
+  </div>
+
+  <!-- ══════════ CONTENIDO ══════════ -->
+  <main class="container" style="max-width: 780px;">
+    <div class="tyc-card">
+
+      <p class="intro-date">Última actualización: Abril 2026</p>
+      <div class="section-divider"></div>
+
+      <!-- 1 -->
+      <div class="tyc-section">
+        <h4><span class="section-num">1</span> Aceptación de los términos</h4>
+        <p>Al acceder y utilizar este sitio web, aceptas cumplir con los presentes términos y condiciones. Si no estás de acuerdo con alguna parte, te recomendamos no utilizar este servicio.</p>
+        <div class="love-note">
+          También aceptas que significa que vas a estar a mi lado de aquí hasta el final de los tiempos, seremos uno solo con el infinito. Después de leer esto, no hay vuelta atrás. Te amo.
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="tyc-section">
+        <h4><span class="section-num">2</span> Uso del sitio</h4>
+        <p>Tú, Luis Eduardo Ríos, te comprometes a utilizar el sitio web de manera responsable, respetando la legislación vigente (la mía), la moral y el orden público.</p>
+        <ul>
+          <li>No realizar actividades sin la persona que hizo estos cupones (Ivanna Guzmán)</li>
+          <li>Darme amor en cada uno de los días de tu vida en adelante</li>
+          <li>Quedarte a mi lado para siempre</li>
+        </ul>
+      </div>
+
+      <!-- 3 -->
+      <div class="tyc-section">
+        <h4><span class="section-num">3</span> Propiedad intelectual</h4>
+        <p>Todos los contenidos del sitio (textos, imágenes, logotipos, etc.) son propiedad del sitio web o de sus respectivos autores y están protegidos por las leyes de propiedad intelectual.</p>
+      </div>
+
+      <!-- 4 -->
+      <div class="tyc-section">
+        <h4><span class="section-num">4</span> Protección de datos</h4>
+        <p>La información personal proporcionada por los usuarios será tratada conforme a nuestra política de privacidad.</p>
+      </div>
+
+      <!-- 5 -->
+      <div class="tyc-section">
+        <h4><span class="section-num">5</span> Limitación de responsabilidad</h4>
+        <p>No nos hacemos responsables por daños o perjuicios derivados del uso indebido del sitio web.</p>
+        <div class="love-note">Así que ojo, no seas mañosito amor.</div>
+      </div>
+
+      <!-- 6 -->
+      <div class="tyc-section">
+        <h4><span class="section-num">6</span> Modificaciones</h4>
+        <p>Nos reservamos el derecho de modificar estos términos en cualquier momento.</p>
+        <div class="love-note">Cuidado con eso, mi vida.</div>
+      </div>
+
+      <!-- 7 -->
+      <div class="tyc-section">
+        <h4><span class="section-num">7</span> Legislación aplicable</h4>
+        <p>Estos términos se rigen por las leyes aplicables en el país correspondiente.</p>
+        <div class="love-note">Los de Ivannaland.</div>
+      </div>
+
+      <!-- Botón de regreso -->
+      <div class="text-center mt-4 pt-2">
+        <a href="index.html" class="btn-back">← Regresar a mis cupones</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer>
+    Hecho con amor · © 2026 Love Coupons · Todos los derechos reservados
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
