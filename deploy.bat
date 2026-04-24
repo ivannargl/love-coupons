@@ -1,26 +1,26 @@
 @echo off
 echo ========================================
-echo 🚀 Love Coupons - Deployment Script
+echo Love Coupons - Deployment Script
 echo ========================================
 echo.
 
-echo 📋 Paso 1: Verificando archivos...
+echo Paso 1: Verificando archivos...
 if not exist ".gitignore" (
-    echo ❌ Error: .gitignore no encontrado
+    echo Error: .gitignore no encontrado
     pause
     exit /b 1
 )
 
 if not exist "server\server.js" (
-    echo ❌ Error: server/server.js no encontrado
+    echo Error: server/server.js no encontrado
     pause
     exit /b 1
 )
 
-echo ✅ Archivos verificados
+echo Archivos verificados
 echo.
 
-echo 🔧 Paso 2: Recordatorio de configuracion
+echo Paso 2: Recordatorio de configuracion
 echo.
 echo IMPORTANTE: Antes de continuar...
 echo.
@@ -33,7 +33,7 @@ echo ¿Ya hiciste esto? Presiona cualquier tecla para continuar...
 pause >nul
 
 echo.
-echo 📤 Paso 3: Preparando Git...
+echo Paso 3: Preparando Git...
 echo.
 
 if not exist ".git" (
@@ -48,7 +48,7 @@ if not exist ".git" (
 )
 
 echo.
-echo 🔗 Paso 4: Subir a GitHub
+echo Paso 4: Subir a GitHub
 echo.
 echo Ejecuta estos comandos manualmente:
 echo.
@@ -62,7 +62,7 @@ echo 2. Configura las variables de entorno en Railway
 echo 3. Ve a GitHub Pages en Settings y activa Pages
 echo.
 
-echo 🎉 ¡Listo para desplegar!
+echo Listo para desplegar!
 echo.
 echo Lee DEPLOYMENT.md para instrucciones detalladas.
 echo.

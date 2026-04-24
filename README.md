@@ -1,18 +1,18 @@
-# 💝 Love Coupons
+# Love Coupons
 
 Una aplicación web para gestionar cupones románticos con integración a WhatsApp y MongoDB Atlas.
 
-## ✨ Características
+## Características
 
-- 🎫 Gestión completa de cupones (disponibles, usados, expirados, especiales)
-- 📱 Notificaciones automáticas por WhatsApp al canjear cupones
-- 🗄️ Base de datos en MongoDB Atlas
-- 🎨 Interfaz responsiva con Bootstrap 5
-- ⏰ Cuenta regresiva para cupones especiales
-- 🔄 Renovación automática de fechas
-- 📊 Filtros por estado de cupón
+- Gestión completa de cupones (disponibles, usados, expirados, especiales)
+- Notificaciones automáticas por WhatsApp al canjear cupones
+- Base de datos en MongoDB Atlas
+- Interfaz responsiva con Bootstrap 5
+- Cuenta regresiva para cupones especiales
+- Renovación automática de fechas
+- Filtros por estado de cupón
 
-## 🏗️ Arquitectura
+## Arquitectura
 
 ### Frontend (GitHub Pages)
 - HTML5/CSS3/JavaScript ES6+
@@ -25,7 +25,7 @@ Una aplicación web para gestionar cupones románticos con integración a WhatsA
 - API REST para operaciones CRUD
 - Variables de entorno para configuración segura
 
-## 🚀 Despliegue
+## Despliegue
 
 ### Requisitos
 - Cuenta de GitHub
@@ -59,7 +59,7 @@ Una aplicación web para gestionar cupones románticos con integración a WhatsA
 
 Lee [`DEPLOYMENT.md`](DEPLOYMENT.md) para instrucciones completas.
 
-## 📁 Estructura del proyecto
+## Estructura del proyecto
 
 ```
 love-coupons/
@@ -80,7 +80,7 @@ love-coupons/
 └── deploy.bat         # Script de despliegue (Windows)
 ```
 
-## 🔧 Desarrollo local
+## Desarrollo local
 
 ### Backend
 ```bash
@@ -93,20 +93,20 @@ npm start
 ### Frontend
 Abre `index.html` en tu navegador o usa un servidor local.
 
-## 🛡️ Seguridad
+## Seguridad
 
-- ✅ Credenciales de MongoDB solo en Railway (no expuestas)
-- ✅ Variables de entorno para configuración
-- ✅ CORS configurado correctamente
-- ✅ No hay llaves sensibles en código público
+- Credenciales de MongoDB solo en Railway (no expuestas)
+- Variables de entorno para configuración
+- CORS configurado correctamente
+- No hay llaves sensibles en código público
 
-## 📝 API Endpoints
+## API Endpoints
 
 - `GET /api/coupons` - Obtener todos los cupones
 - `POST /api/coupons/redeem` - Canjear un cupón
 - `GET /api/health` - Health check
 
-## 🤝 Contribuir
+## Contribuir
 
 1. Fork el proyecto
 2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
@@ -114,13 +114,13 @@ Abre `index.html` en tu navegador o usa un servidor local.
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto está bajo la Licencia MIT.
 
 ---
 
-Hecho con ❤️ para momentos especiales
+Hecho con amor para momentos especiales
 
 ### 4. Crea la colección en MongoDB Atlas
 
