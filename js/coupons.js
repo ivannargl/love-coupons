@@ -142,14 +142,35 @@ function buildCardHTML(coupon) {
 ══════════════════════════════════════════ */
 
 /**
+ * Ordena los cupones: "Cupón Prueba" primero, especiales al final, resto en el medio
+ */
+function sortCoupons(coupons) {
+  return coupons.sort((a, b) => {
+    // "Cupón Prueba" va primero
+    if (a.titulo === "Cupón Prueba" && b.titulo !== "Cupón Prueba") return -1;
+    if (a.titulo !== "Cupón Prueba" && b.titulo === "Cupón Prueba") return 1;
+
+    // Cupones especiales van al final
+    if (a.estado === "especial" && b.estado !== "especial") return 1;
+    if (a.estado !== "especial" && b.estado === "especial") return -1;
+
+    // Mantener orden original para el resto
+    return 0;
+  });
+}
+
+/**
  * Inserta todas las tarjetas en el grid del DOM.
  * Llama a esta función con el array que venga de tu API.
  */
 function renderCoupons(data) {
-  currentCoupons = data.map((coupon, index) => ({
+  let processedCoupons = data.map((coupon, index) => ({
     ...coupon,
     imagen: getCouponImage(index)
   }));
+
+  // Aplicar ordenamiento
+  currentCoupons = sortCoupons(processedCoupons);
 
   const grid = document.getElementById("couponsGrid");
   grid.innerHTML = currentCoupons.map(buildCardHTML).join("");
@@ -191,7 +212,7 @@ function openModal(id) {
   if (!coupon) return;
 
   // Si se abre el cupón especial llamado "Cupón especial", renovar otros cupones
-  if (coupon.estado === 'especial' && coupon.titulo === 'Cupón especial') {
+  if (coupon.estado === 'especial' && coupon.titulo === 'Cupón Especial') {
     renewNonSpecialCoupons('2027-05-17');
     renderCoupons(currentCoupons);
   }
