@@ -16,6 +16,19 @@
 
 const COUPONS = [
   {
+    _id:         "prueba001",
+    titulo:      "Cupón Prueba",
+    descripcion: "Este es un cupón de prueba para validar el funcionamiento del sistema.",
+    codigo:      "PRUEBA2026",
+    expiracion:  "2026-12-31",
+    estado:      "disponible",
+    fechaCanje:  null,
+
+    categoria: "disponible",
+    etiqueta:  "Disponible",
+    imagen:    "img/0.jpg"
+  },
+  {
     _id:         "69e9c57a8e4c6d70f744de4d",
     titulo:      "Cena Romántica",
     descripcion: "Válido por una cena en tu lugar favorito, con todo lo que más te gusta.",
