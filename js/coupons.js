@@ -6,7 +6,7 @@ const IMAGE_COUNT = 20;
 // Configuración de API - cambiar según el entorno
 const API_BASE = window.location.hostname === 'localhost'
   ? 'http://localhost:3000'
-  : 'love-coupons-production-2b9e.up.railway.app'; 
+  : 'https://love-coupons-production-2b9e.up.railway.app'; 
 
 /* ══════════════════════════════════════════
    HELPERS
